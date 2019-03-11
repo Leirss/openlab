@@ -5,9 +5,9 @@ from comments.forms import CommentForm
 import markdown
 
 
-def index(request):
+def home(request):
     post_list = Post.objects.all().order_by()
-    return render(request, 'blog/index.html', context={'post_list': post_list})
+    return render(request, 'blog/home.html', context={'post_list': post_list})
 
 
 def detail(request, pk):
@@ -41,6 +41,15 @@ def category(request, pk):
     cate = get_object_or_404(Category, pk=pk)
     post_list = Post.objects.filter(category=cate).order_by()
     return render(request, 'blog/index.html', context={'post_list': post_list})
+
+def projects(request):
+  return render(request,'blog/projects.html')
+
+def events(request):
+  return render(request,'blog/events.html')
+
+def team(request):
+  return render(request,'blog/team.html')
 
 
 # Create your views here.
