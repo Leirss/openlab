@@ -1,0 +1,25 @@
+{% extends "blog/home.html" %}
+{% load staticfiles %}
+{% load blog_tags %}
+	{%block page-top%}
+	{% include "blog/_banner.html" %}
+	{%endblock page-top%}
+	{%block header%}
+	{%endblock header%}
+	{%block body %}
+		<div class="row container light-bg col-lg-12">
+			<div class="post" >
+				{% for post in recent_post_list %}
+                    <li>
+                        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    </li>
+                {% endfor %}
+			</div>
+		</div>
+		
+		<p id="back-top" style="display: block;">
+			<a href="home">
+				<i class="fa fa-angle-up">::before</i>
+			</a>
+		</p>
+	{%endblock body%}
