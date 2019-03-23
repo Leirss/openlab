@@ -18,11 +18,18 @@ from django.urls import path
 from django.conf.urls import url, include
 from blog.feeds import AllPostsRssFeed
 
+from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('blog.urls')),
-    path('', include('comments.urls')),
+    path('users/', include('users.urls')),
+    #path('', include('blog.urls')),
+    #path('', include('comments.urls')),
     url(r'^all/rss/$', AllPostsRssFeed(), name='rss'),
-    url(r'^search/', include('haystack.urls')),
+    path('search/', include('haystack.urls')),
+    path('users/', include('users.urls')),
+    # 将 auth 应用中的 urls 模块包含进来
+    path('users/', include('django.contrib.auth.urls')),
+    url(r'^$', views.index, name='index')
+
 ]

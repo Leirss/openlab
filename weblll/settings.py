@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'haystack',
+    'users',
     'blog',   # 注册 blog 应用
     'comments',
 ]
@@ -129,9 +130,24 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+AUTH_USER_MODEL = 'users.User'
+
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 STATIC_URL = '/static/'
 #STATIC_ROOT=os.path.join(BASE_DIR,"static")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'users.backends.EmailBackend',
+)
+
+'''
+    开发环境下发送邮件
+'''
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
