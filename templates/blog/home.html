@@ -5,43 +5,34 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1,shrink-to-fit=no">
+
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+
 		<meta name="description" content="">
 		<meta name="author" content="">
 		<link rel="icon" type="image/x-icon" href="{% static 'images/favicon.png'%}">
-		<title>Nantes - Onepage Business Template</title>
+
+
+		{%block title%}<title>Sdu Open Lab</title>{%endblock title%}
 		<!-- Bootstrap core CSS -->
-		<link href="{% static 'css/bootstrap.min.css' %} " rel="stylesheet">
+		<link href="{% static 'css/bootstrap.css' %} " rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<!-- Custom styles for this template -->
+		<link href="{% static 'css/clean-blog.css'%}" rel="stylesheet">
 		<link type='text/css' href="{% static 'css/owl.carousel.css' %} "rel="stylesheet">
 		<link type='text/css' href="{% static 'css/owl.theme.default.min.css' %} " rel="stylesheet">
 		<link type='text/css' href="{% static 'css/animate.css' %}" rel="stylesheet">
 		<link type='text/css' href="{% static 'css/style.css' %} " rel="stylesheet">
 	</head>
-	
-	<body id="page-top">
-		<!-- Navigation -->
-		{%block page-top%}
-		<nav class="navbar navbar-default navbar-fixed-top">
+			<nav class="navbar navbar-default navbar-fixed-top" id="mainNav" > 
 			<div class="container">
 				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header page-scroll">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand page-scroll" href="#page-top" style="font-style:italic;font-weight: bold;color: #cc0000;font-size: 30px;margin-top: 20px;" >SDU Open Lab</a>
-				</div>
+				<a class="navbar-brand page-scroll" style="color: #cc0000; " href="home.html">兴趣开放创新平台</a>
 				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1 navbarResponsive">
 					<ul class="nav navbar-nav navbar-right">
-						<li class="hidden">
-							<a href="#page-top"></a>
-						</li>
 						<li>
 							<a class="page-scroll" href="#page-top">Home</a>
 						</li>
@@ -60,16 +51,20 @@
 			</div>
 			<!-- /.container-fluid -->
 		</nav>
-		{%endblock page-top%}
-		<!-- Header -->
-		{% block header%}
-				<header>
-			<div class="container-fluid">
-				<div class="slider-container">
+	<body id="page-top">
+		<!-- Navigation -->
+		{%block page-top%}
 
+		{%endblock page-top%}
+
+		<!-- Header -->
+		{% block scroll-head%}
+  		<header >
+			<div class="container-fluid ">
+				<div class="slider-container">
 						<div class="owl-slider owl-carousel">
 							<div class="item">
-								<div class="owl-slider-item">
+								<div class="owl-slider-item ">
 									<img src="{% static 'images/demo/mainpage.jpg' %}" class="img-responsive" alt="portfolio">
 									<div class="intro-text">
 										<div class="intro-lead-in" >Welcome to </div>
@@ -96,11 +91,10 @@
 								</div>
 							</div>
 						</div>
-
 				</div>
 			</div>
 		</header>
-		{%endblock header%}
+		{%endblock scroll-head%}
 		{%block body%}
 		<section id="about" class="light-bg">
 			<div class="container">
@@ -177,7 +171,7 @@
 					</div>
 					<div class="col-md-3 mb-sm-30">
 						<div class="counter-item">
-							<h2 class="stat-number" data-n="20">0</h2>
+							<h2 class="stat-number" data-n="30">0</h2>
 							<h6>Clients</h6>
 						</div>
 					</div>
@@ -457,5 +451,11 @@
 		<script src="{% static 'js/jquery.appear.js' %}"></script>
 		<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
 		<script src="{% static 'js/theme-scripts.js' %}"></script>
+		<script src="{% static 'js/bootstrap.bundle.min.js'%}"></script>
+		  <!-- Bootstrap core JavaScript -->
+<!-- 		<script src ="{% static 'js/jquery.min.js'%}"></script>
+		<script src="{% static 'js/bootstrap.bundle.min.js'%}"></script> -->
+		<!-- Custom scripts for this template -->
+<!-- 		<script src="{% static 'js/clean-blog.min.js'%}"></script> -->
 	</body>
 </html>
