@@ -14,6 +14,17 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+class ProjectName(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
+class TeamName(models.Model):
+    name = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
@@ -21,8 +32,60 @@ class Tag(models.Model):
     def __str__(self):
         return self.name
 
-class Team(models.Model):
+class Project(models.Model):
+
+    name = models.ForeignKey(ProjectName, on_delete=models.CASCADE)
+    body = models.TextField(blank=True)
+    excerpt = models.CharField(max_length=200, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.excerpt:
+            md = markdown.Markdown(extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+            ])
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
+        super(Project.self).save(*args, **kwargs)
+
+
+    def __str__(self):
+        return self.name
+
+class Event(models.Model):
+
     name = models.CharField(max_length=100)
+    body = models.TextField(blank=True)
+    excerpt = models.CharField(max_length=200, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.excerpt:
+            md = markdown.Markdown(extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+            ])
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
+        super(Event, self).save(*args, **kwargs)
+
+
+    def __str__(self):
+        return self.name
+
+class Team(models.Model):
+
+    name = models.ForeignKey(TeamName, on_delete=models.CASCADE)
+    member = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
+    body = models.TextField(blank=True)
+    projectname = models.ManyToManyField(ProjectName, blank=True)
+    excerpt = models.CharField(max_length=200, blank=True)
+
+    def save(self, *args, **kwargs):
+        if not self.excerpt:
+            md = markdown.Markdown(extensions=[
+                'markdown.extensions.extra',
+                'markdown.extensions.codehilite',
+            ])
+            self.excerpt = strip_tags(md.convert(self.body))[:54]
+        super(Team, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Post, Category, Tag
+from .models import Post, Category, Tag, Team, Project, Event
 from comments.forms import CommentForm
 import markdown
 from django.views.generic import ListView, DetailView
@@ -138,22 +138,23 @@ class TagView(ListView):
         return super(TagView, self).get_queryset().filter(tags=tag)
 
 class TeamView(ListView):
-    model = Post
+    model = Team
     template_name = 'blog/bootstrap.html'
-    context_object_name = 'post_list'
+    context_object_name = 'team_list'
     # def get_queryset(self):
     #     tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
     #     return super(TeamView, self).get_queryset().filter(tags=tag)
 
 class ProjectsView(ListView):
-    model = Post
+    model = Project
     template_name = 'blog/bootstrap.html'
-    context_object_name = 'post_list'
+    context_object_name = 'project_list'
 
 class EventsView(ListView):
-    model = Post
+    model = Event
     template_name = 'blog/bootstrap.html'
-    context_object_name = 'post_list'
+    context_object_name = 'event_list'
+
 
 
 def search(request):
@@ -167,6 +168,8 @@ def search(request):
     post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
     return render(request, 'blog/index.html', {'error_msg': error_msg,
                                                'post_list': post_list})
+
+
 
 """def index(request):
     post_list = Post.objects.all().order_by()

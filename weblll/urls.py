@@ -22,14 +22,13 @@ from users import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('users.urls')),
-    #path('', include('blog.urls')),
-    #path('', include('comments.urls')),
+    path('', include('blog.urls')),
+    path('', include('comments.urls')),
     url(r'^all/rss/$', AllPostsRssFeed(), name='rss'),
     path('search/', include('haystack.urls')),
     path('users/', include('users.urls')),
     # 将 auth 应用中的 urls 模块包含进来
     path('users/', include('django.contrib.auth.urls')),
-    url(r'^$', views.index, name='index')
+    path('login/', views.index, name='index')
 
 ]
