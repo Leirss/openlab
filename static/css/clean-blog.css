@@ -69,7 +69,7 @@ blockquote {
 
 ::selection {
   color: #fff;
-  background: #0085A1;
+  background: #cc0000;
   text-shadow: none;
 }
 
@@ -81,6 +81,7 @@ img::-moz-selection {
 img::selection {
   color: #fff;
   background: transparent;
+
 }
 
 img::-moz-selection {
@@ -273,42 +274,63 @@ header.masthead .post-heading .meta a {
     font-size: 30px;
   }
 }
+hr{
+  clear: both;
+   float: right; 
+   width: 100%; 
+   height: 1px; 
+   line-height: 1px; 
+   font-size: 0; 
+   border: none 0; 
+   margin: 1.4em 1.4em; 
+   border: none; 
+   background: #ddd;
+   background-image: 
+   -webkit-gradient(linear,left bottom,right bottom,color-stop(0, rgb(255,255,255)), color-stop(0.1, rgb(221,221,221)),color-stop(0.9, rgb(221,221,221)),color-stop(1, rgb(255,255,255)));
+   background-image: -webkit-linear-gradient(left center,rgb(255,255,255) 0%,rgb(221,221,221) 10%,rgb(221,221,221) 90%,rgb(255,255,255) 100%);     background-image: -moz-linear-gradient(left center,rgb(255,255,255) 0%,rgb(221,221,221) 10%,rgb(221,221,221) 90%,rgb(255,255,255) 100%); 
+  background-image: -o-linear-gradient(left center,rgb(255,255,255) 0%,rgb(221,221,221) 10%,rgb(221,221,221) 90%,rgb(255,255,255) 100%);
 
+}
+.post-preview{
+  height: 288px;
+  width: 606px;
+  margin-top: 82px;
+}
 .post-preview > a {
   color: #212529;
 }
 
-.post-preview > a:focus, .post-preview > a:hover {
+.post-preview  a:focus, .post-preview  a:hover {
   text-decoration: none;
-  color: #0085A1;
+  color: #cc0000;
 }
 
-.post-preview > a > .post-title {
+.post-title {
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 10px;
 }
 
-.post-preview > a > .post-subtitle {
+.post-subtitle {
   font-weight: 300;
   margin: 0 0 10px;
 }
 
-.post-preview > .post-meta {
+ .post-meta {
   font-size: 18px;
   font-style: italic;
   margin-top: 0;
   color: #868e96;
 }
 
-.post-preview > .post-meta > a {
+.post-meta > a {
   text-decoration: none;
   color: #212529;
 }
 
-.post-preview > .post-meta > a:focus, .post-preview > .post-meta > a:hover {
+.post-meta > a:focus, .post-meta > a:hover {
   text-decoration: underline;
-  color: #0085A1;
+  color: #CC0000;
 }
 
 @media only screen and (min-width: 768px) {
@@ -404,8 +426,8 @@ footer .copyright {
 }
 
 .btn-primary {
-  background-color: #0085A1;
-  border-color: #0085A1;
+  background-color: #cc0000;
+  border-color: #cc0000;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {

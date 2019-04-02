@@ -139,7 +139,7 @@ class TagView(ListView):
 
 class TeamView(ListView):
     model = Team
-    template_name = 'blog/bootstrap.html'
+    template_name = 'blog/team.html'
     context_object_name = 'team_list'
     # def get_queryset(self):
     #     tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
@@ -147,12 +147,12 @@ class TeamView(ListView):
 
 class ProjectsView(ListView):
     model = Project
-    template_name = 'blog/bootstrap.html'
+    template_name = 'blog/projects.html'
     context_object_name = 'project_list'
 
 class EventsView(ListView):
     model = Event
-    template_name = 'blog/bootstrap.html'
+    template_name = 'blog/events.html'
     context_object_name = 'event_list'
 
 
