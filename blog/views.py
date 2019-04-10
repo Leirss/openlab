@@ -154,7 +154,8 @@ class EventsView(ListView):
     model = Event
     template_name = 'blog/events.html'
     context_object_name = 'event_list'
-
+    def get_list(self):
+        
 
 
 def search(request):

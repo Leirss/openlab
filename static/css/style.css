@@ -141,9 +141,9 @@ section ul li:before {
 }
 .navbar-default .navbar-brand {
 	color: #fff;
-	font-family: "Open Sans",sans-serif;
-	padding: 0px;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	margin-left: 10px;
+	font-weight: bold;
 }
 .navbar-default .navbar-brand:hover,.navbar-default .navbar-brand:focus,.navbar-default .navbar-brand:active,.navbar-default .navbar-brand.active {
 	color: #fec503
