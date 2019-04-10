@@ -9,7 +9,6 @@ from markdown.extensions.toc import TocExtension
 from django.db.models import Q
 
 
-
 class IndexView(ListView):
     model = Post
     template_name = 'blog/home.html'
@@ -48,7 +47,8 @@ class IndexView(ListView):
                 last = True
 
         elif page_number == total_pages:
-            left = page_range[(page_number - 3) if (page_number - 3) > 0 else 0:page_number - 1]
+            left = page_range[(page_number - 3)
+                              if (page_number - 3) > 0 else 0:page_number - 1]
 
             if left[0] > 2:
                 left_has_more = True
@@ -56,7 +56,8 @@ class IndexView(ListView):
             if left[0] > 1:
                 first = True
         else:
-            left = page_range[(page_number - 3) if (page_number - 3) > 0 else 0:page_number - 1]
+            left = page_range[(page_number - 3)
+                              if (page_number - 3) > 0 else 0:page_number - 1]
             right = page_range[page_number:page_number + 2]
 
             if right[-1] < total_pages - 1:
@@ -137,6 +138,13 @@ class TagView(ListView):
         tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
         return super(TagView, self).get_queryset().filter(tags=tag)
 
+
+#class IndexTeamView(ListView):
+ #   model = Team
+  #  template_name = 'blog/home.html'
+   # context_object_name = 'team_list'
+
+
 class TeamView(ListView):
     model = Team
     template_name = 'blog/team.html'
@@ -145,16 +153,17 @@ class TeamView(ListView):
     #     tag = get_object_or_404(Tag, pk=self.kwargs.get('pk'))
     #     return super(TeamView, self).get_queryset().filter(tags=tag)
 
+
 class ProjectsView(ListView):
     model = Project
     template_name = 'blog/projects.html'
     context_object_name = 'project_list'
 
+
 class EventsView(ListView):
     model = Event
     template_name = 'blog/events.html'
     context_object_name = 'event_list'
-
 
 
 def search(request):
@@ -165,10 +174,10 @@ def search(request):
         error_msg = "好像没有空气可以喝呢?!"
         return render(request, 'blog/index.html', {'error_msg': error_msg})
 
-    post_list = Post.objects.filter(Q(title__icontains=q) | Q(body__icontains=q))
+    post_list = Post.objects.filter(
+        Q(title__icontains=q) | Q(body__icontains=q))
     return render(request, 'blog/index.html', {'error_msg': error_msg,
                                                'post_list': post_list})
-
 
 
 """def index(request):

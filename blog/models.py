@@ -1,4 +1,4 @@
-    # coding: utf-8
+# coding: utf-8
 import markdown
 from django.db import models
 from django.conf import settings
@@ -14,11 +14,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class ProjectName(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
 
 class TeamName(models.Model):
     name = models.CharField(max_length=100)
@@ -26,11 +28,13 @@ class TeamName(models.Model):
     def __str__(self):
         return self.name
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
 
 class Project(models.Model):
 
@@ -47,9 +51,9 @@ class Project(models.Model):
             self.excerpt = strip_tags(md.convert(self.body))[:54]
         super(Project.self).save(*args, **kwargs)
 
-
     def __str__(self):
         return self.name
+
 
 class Event(models.Model):
 
@@ -66,14 +70,15 @@ class Event(models.Model):
             self.excerpt = strip_tags(md.convert(self.body))[:54]
         super(Event, self).save(*args, **kwargs)
 
-
     def __str__(self):
         return self.name
+
 
 class Team(models.Model):
 
     name = models.ForeignKey(TeamName, on_delete=models.CASCADE)
     member = models.ManyToManyField(settings.AUTH_USER_MODEL, blank=True)
+    img = models.ImageField(upload_to='img', blank=True)
     body = models.TextField(blank=True)
     projectname = models.ManyToManyField(ProjectName, blank=True)
     excerpt = models.CharField(max_length=200, blank=True)
@@ -88,7 +93,8 @@ class Team(models.Model):
         super(Team, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.name.name
+
 
 class Post(models.Model):
 
@@ -99,7 +105,8 @@ class Post(models.Model):
     excerpt = models.CharField(max_length=200, blank=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, blank=True)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     views = models.PositiveIntegerField(default=0)
 
     def increase_views(self):
