@@ -1,0 +1,30 @@
+{% extends "blog/projects.html" %}
+{% load staticfiles %}
+{% load blog_tags %}
+{%block title%}
+<title>artical name</title>
+{%endblock title%}
+{%block header%}
+	<h1>Artical name</h1>
+	<span class="subheading">subtitle</span>
+{%endblock header%}
+{%block content%}
+	{%for post in post_list%}
+	<div class="col-lg-7 col-md-10 mx-auto">
+	        <div class="post-preview">
+	            <h5 class="post-title">
+	              {{ post.name }}
+	            </h5>
+	            <h3 class="post-subtitle">
+	              {{ post.author }}
+	            </h3>
+				<div class="post-content">
+					{{post.body}}
+				</div>
+	          	<p class="post-meta">
+	            <!-- Posted by<a href="#">{{post.author}}</a> -->
+	            {{post.created_time}}</p>
+	        </div>
+    	</div>
+	{%endfor%}
+{%endblock content%}

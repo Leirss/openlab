@@ -165,6 +165,11 @@ class EventsView(ListView):
     template_name = 'blog/events.html'
     context_object_name = 'event_list'
 
+class ArticleView(ListView):
+    model=Post
+    template_name = 'blog/articles.html'
+    context_object_name='post_list'
+
 
 def search(request):
     q = request.GET.get('q')

@@ -8,5 +8,32 @@
             <h1>Recently Events</h1>
             <span class="subheading">最近新闻</span>
             {%endblock header%}
+        {%block content%}
+        {%for event in event_list %}
+    	<div class="col-lg-4 col-md-5 mx-auto mt-5">
+    		<a href="{{ event.get_absolute_url }}">
+	    	<div class="media">
+				<img class="mr-3 align-self-center" src="{{event.img.url}}" alt="{{event.name}}" style="height: 259px;width: 388px;">
+			</div>
+			</a>
+		</div>
+  	    <div class="col-lg-7 col-md-10 mx-auto">
+	        <div class="post-preview">
+	          <a href="{{ event.get_absolute_url }}">
+	            <h5 class="post-title">
+	              {{ event.name }}
+	            </h5>
+	            <h3 class="post-subtitle">
+	              {{ event.excerpt }}
+	            </h3>
+	          </a>
+	          <p class="post-meta">
+	            <!-- Posted by<a href="#">{{post.author}}</a> -->
+	            {{event.created_time}}</p>
+	        </div>
+    	</div>
+     	<hr>
+        {%endfor%}
+        {%endblock content%}
 		<!-- Navigation -->
 		

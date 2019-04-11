@@ -40,7 +40,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="/">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
@@ -84,7 +84,7 @@
 		</div>
   	    <div class="col-lg-7 col-md-10 mx-auto">
 	        <div class="post-preview">
-	          <a href="post.html">
+	          <a href="/articles">
 	            <h5 class="post-title">
 	              Man must explore, and this is exploration at its greatest
 	            </h5>
@@ -100,27 +100,29 @@
      	<hr>
         <!-- 数据库调用 -->
         {%block content%}
-        {%for post in post_list %}
+        {%for post in project_list %}
+      {%if post.img.url in post.img.url%}
     	<div class="col-lg-4 col-md-5 mx-auto mt-5">
     		<a href="{{ post.get_absolute_url }}">
 	    	<div class="media">
-				<img class="mr-3 align-self-center" src="{%static 'images/demo/mainpage.jpg'%}" alt="{{post.number}}" style="height: 259px;width: 388px;">
+				<img class="mr-3 align-self-center" src="{{post.img.url}}" alt="{{post.number}}" style="height: 259px;width: 388px;">
 			</div>
 			</a>
 		</div>
+    {%endif%}
   	    <div class="col-lg-7 col-md-10 mx-auto">
 	        <div class="post-preview">
 	          <a href="{{ post.get_absolute_url }}">
 	            <h5 class="post-title">
-	              {{ post.title }}
+	              {{ post.name }}
 	            </h5>
 	            <h3 class="post-subtitle">
-	              {{ post.subtitle }}
+	              {{ post.excerpt }}
 	            </h3>
 	          </a>
-	          <p class="post-meta">Posted by
+<!-- 	          <p class="post-meta">Posted by
 	            <a href="#">{{post.author}}</a>
-	            {{post.time}}</p>
+	            {{post.time}}</p> -->
 	        </div>
     	</div>
      	<hr>

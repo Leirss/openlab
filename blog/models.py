@@ -5,7 +5,8 @@ from django.conf import settings
 from django.urls import reverse
 from django.utils.html import strip_tags
 from django.utils.six import python_2_unicode_compatible
-
+from django.utils import timezone
+import datetime
 
 @python_2_unicode_compatible
 class Category(models.Model):
@@ -37,10 +38,10 @@ class Tag(models.Model):
 
 
 class Project(models.Model):
-
     name = models.ForeignKey(ProjectName, on_delete=models.CASCADE)
     body = models.TextField(blank=True)
     excerpt = models.CharField(max_length=200, blank=True)
+    img = models.ImageField(upload_to='img/Project', blank=True)
 
     def save(self, *args, **kwargs):
         if not self.excerpt:
@@ -49,17 +50,19 @@ class Project(models.Model):
                 'markdown.extensions.codehilite',
             ])
             self.excerpt = strip_tags(md.convert(self.body))[:54]
-        super(Project.self).save(*args, **kwargs)
+        super(Project, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.name.name
 
 
 class Event(models.Model):
 
     name = models.CharField(max_length=100)
     body = models.TextField(blank=True)
+    img = models.ImageField(upload_to='img', blank=True)
     excerpt = models.CharField(max_length=200, blank=True)
+    created_time = models.DateTimeField(default=timezone.now, null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.excerpt:
