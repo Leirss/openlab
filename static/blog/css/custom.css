@@ -228,7 +228,7 @@ img {
 
 .post-category::after, .post-date::after, .post-author::after, .comments-link::after {
     content: ' ·';
-    color: #000;
+    color: #fff;
 }
 
 /**

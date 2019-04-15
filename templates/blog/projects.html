@@ -12,12 +12,10 @@
     <title>Our Projects</title>
     {%endblock title%}
     <!-- Bootstrap core CSS -->
-
     <link href="{% static 'css/bootstraps.min.css'%}" rel="stylesheet">
     <!-- add new css 4.15-->
     <link rel="stylesheet" href="{% static 'blog/css/custom.css' %}">
     <!-- end add -->
-
     <!-- 注意这里引用另外一个bootstrap -->
     <!-- Custom fonts for this template -->
     <link href="{% static 'css/all.min.css'%}" rel="stylesheet" type="text/css">
@@ -56,7 +54,7 @@
         </div>
     </nav>
     <!-- Page Header -->
-    <header class="masthead" style="background-image: url('../static/images/demo/mainpage.jpg')">
+    <header class="masthead" style="background-image: url('/static/images/demo/mainpage.jpg')">
         <div class="overlay"></div>
         <div class="container">
             <div class="row">
@@ -75,27 +73,6 @@
     {% block main %}
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-5 mx-auto mt-5">
-                <div class="media">
-                    <img class="mr-3 align-self-center" src="{%static 'images/demo/mainpage.jpg'%}" alt="Generic placeholder image" style="height: 259px;width: 388px;">
-                </div>
-            </div>
-            <div class="col-lg-7 col-md-10 mx-auto">
-                <div class="post-preview">
-                    <a href="/articles">
-                        <h5 class="post-title">
-                            Man must explore, and this is exploration at its greatest
-                        </h5>
-                        <h3 class="post-subtitle">
-                            Problems look mighty small from 150 miles up
-                        </h3>
-                    </a>
-                    <p class="post-meta">Posted by
-                        <a href="#">Start Bootstrap</a>
-                        on September 24, 2019</p>
-                </div>
-            </div>
-            <hr>
             <!-- 数据库调用 -->
             {%block content%}
             {%for post in project_list %}
