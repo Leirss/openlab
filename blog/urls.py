@@ -17,5 +17,5 @@ urlpatterns = [
     url(r'^team/', views.TeamView.as_view(), name='team'),
     url(r'^projects/', views.ProjectsView.as_view(), name='projects'),
     url(r'^events/', views.EventsView.as_view(), name='events'),
-    url(r'articles/', views.ArticleView.as_view(),name="articles"),
+    url(r'articles/', views.ArticleView.as_view(), name="articles"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

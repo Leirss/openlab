@@ -8,6 +8,7 @@ from django.utils.six import python_2_unicode_compatible
 from django.utils import timezone
 import datetime
 
+
 @python_2_unicode_compatible
 class Category(models.Model):
     name = models.CharField(max_length=100)
@@ -56,27 +57,6 @@ class Project(models.Model):
         return self.name.name
 
 
-class Event(models.Model):
-
-    name = models.CharField(max_length=100)
-    body = models.TextField(blank=True)
-    img = models.ImageField(upload_to='img', blank=True)
-    excerpt = models.CharField(max_length=200, blank=True)
-    created_time = models.DateTimeField(default=timezone.now, null=True, blank=True)
-
-    def save(self, *args, **kwargs):
-        if not self.excerpt:
-            md = markdown.Markdown(extensions=[
-                'markdown.extensions.extra',
-                'markdown.extensions.codehilite',
-            ])
-            self.excerpt = strip_tags(md.convert(self.body))[:54]
-        super(Event, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
-
-
 class Team(models.Model):
 
     name = models.ForeignKey(TeamName, on_delete=models.CASCADE)
@@ -103,6 +83,7 @@ class Post(models.Model):
 
     title = models.CharField(max_length=70)
     body = models.TextField()
+    img = models.ImageField(upload_to='img', blank=True)
     created_time = models.DateTimeField()
     modified_time = models.DateTimeField()
     excerpt = models.CharField(max_length=200, blank=True)
